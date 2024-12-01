@@ -8,7 +8,7 @@ public class ProblemInputReader {
         String fullPath = STR."/\{day}/\{problemSet}";
         InputStream is = ProblemInputReader.class.getResourceAsStream(fullPath);
         if (is == null) {
-            throw new IllegalArgumentException(STR."can't find required day1 data: \{fullPath}. is it added to resources?");
+            throw new IllegalArgumentException(STR."can't find required input data: \{fullPath}. is it added to resources?");
         }
         return new Scanner(is);
     }
