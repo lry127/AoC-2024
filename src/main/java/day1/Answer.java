@@ -7,8 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
-public class Question {
-    public static void main(String[] args) {
+public class Answer {
+    public static void main() {
         List<List<Integer>> in = readInput();
         List<Integer> col1 = in.getFirst();
         List<Integer> col2 = in.getLast();
