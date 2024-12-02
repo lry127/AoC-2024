@@ -55,7 +55,6 @@ public class Answer {
                 boolean successful = removeAndTest(unsafeReport, i);
                 if (successful) {
                     newSafeReports.add(unsafeReportIdx);
-                    System.err.println(STR."making safe (remove gap): \{unsafeReport}");
                     break;
                 }
             }
