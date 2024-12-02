@@ -49,11 +49,11 @@ public class Answer {
         }
         unsafeReportsIdx.removeAll(safeReportsIdx);
         List<Integer> newSafeReports = new ArrayList<>();
+
         for (int unsafeReportIdx : unsafeReportsIdx) {
             List<Integer> unsafeReport = allReports.get(unsafeReportIdx);
             for (int i = 0; i < unsafeReport.size(); ++i) {
-                boolean successful = removeAndTest(unsafeReport, i);
-                if (successful) {
+                if (removeAndTest(unsafeReport, i)) {
                     newSafeReports.add(unsafeReportIdx);
                     break;
                 }
