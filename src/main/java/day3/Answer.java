@@ -9,10 +9,6 @@ import java.util.List;
 
 public class Answer {
     private record Instruction(int operator1, int operator2, int instructionPos) {
-        public int getInstructionPos() {
-            return instructionPos;
-        }
-
         public int compute() {
             return operator1 * operator2;
         }
@@ -63,7 +59,7 @@ public class Answer {
 
         ConditionController controller = new ConditionController(input);
         int question2Answer = instructions.stream()
-                .filter(ins -> controller.isOperationEnabledAt(ins.getInstructionPos()))
+                .filter(ins -> controller.isOperationEnabledAt(ins.instructionPos()))
                 .mapToInt(Instruction::compute).sum();
 
         System.err.println(STR."Question 2: \{question2Answer}");
