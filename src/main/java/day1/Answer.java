@@ -30,7 +30,7 @@ public class Answer {
         res.add(col1);
         res.add(col2);
 
-        Scanner r = ProblemInputReader.getInput("day1", "input.txt");
+        Scanner r = ProblemInputReader.getInputAsScanner("day1", "input.txt");
         while (r.hasNextInt()) {
             col1.add(r.nextInt());
             col2.add(r.nextInt());

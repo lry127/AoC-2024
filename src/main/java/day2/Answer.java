@@ -17,7 +17,7 @@ public class Answer {
     }
 
     private static List<List<Integer>> readInput() {
-        Scanner s = ProblemInputReader.getInput("day2", "input.txt");
+        Scanner s = ProblemInputReader.getInputAsScanner("day2", "input.txt");
         List<List<Integer>> reports = new ArrayList<>();
         while (s.hasNextLine()) {
             String line = s.nextLine();
