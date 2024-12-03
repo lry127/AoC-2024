@@ -8,17 +8,7 @@ import java.util.BitSet;
 import java.util.List;
 
 public class Answer {
-    private static class Instruction {
-        private final int operator1;
-        private final int operator2;
-        private final int instructionPos;
-
-        public Instruction(String operator1, String operator2, int instructionPos) {
-            this.operator1 = Integer.parseInt(operator1);
-            this.operator2 = Integer.parseInt(operator2);
-            this.instructionPos = instructionPos;
-        }
-
+    private record Instruction(int operator1, int operator2, int instructionPos) {
         public int getInstructionPos() {
             return instructionPos;
         }
@@ -51,7 +41,7 @@ public class Answer {
             }
         }
 
-        public boolean isOperationEnableAt(int pos) {
+        public boolean isOperationEnabledAt(int pos) {
             return conditionSet.get(pos);
         }
 
@@ -59,7 +49,7 @@ public class Answer {
         public String toString() {
             StringBuilder builder = new StringBuilder();
             for (int i = 0; i < conditionSet.size(); ++i) {
-                builder.append(STR."pos \{i}: \{isOperationEnableAt(i) ? "enabled" : "disabled"}\n");
+                builder.append(STR."pos \{i}: \{isOperationEnabledAt(i) ? "enabled" : "disabled"}\n");
             }
             return builder.toString();
         }
@@ -73,7 +63,7 @@ public class Answer {
 
         ConditionController controller = new ConditionController(input);
         int question2Answer = instructions.stream()
-                .filter(ins -> controller.isOperationEnableAt(ins.getInstructionPos()))
+                .filter(ins -> controller.isOperationEnabledAt(ins.getInstructionPos()))
                 .mapToInt(Instruction::compute).sum();
 
         System.err.println(STR."Question 2: \{question2Answer}");
@@ -120,7 +110,7 @@ public class Answer {
         if (delimiter != ')') {
             return null;
         }
-        return new Instruction(operator1, operator2, beginIdx);
+        return new Instruction(Integer.parseInt(operator1), Integer.parseInt(operator2), beginIdx);
     }
 
     private static String readOperator(char[] arr, int beginIdx) {
