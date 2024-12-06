@@ -1,5 +1,6 @@
 package day4;
 
+import util.MatrixVerifier;
 import util.ProblemInputReader;
 
 import java.awt.*;
@@ -40,16 +41,7 @@ public class Answer {
         }
 
         public void verify() {
-            if (matrix.isEmpty()) {
-                throw new IllegalStateException("no row?");
-            }
-            int col = matrix.getFirst().size();
-            for (int i = 1; i < matrix.size(); ++i) {
-                int thisCol = matrix.get(i).size();
-                if (thisCol != col) {
-                    throw new IllegalStateException(STR."row \{i} has size \{thisCol} but col 0 has size \{col}");
-                }
-            }
+            MatrixVerifier.verify(matrix);
         }
 
         @Override
