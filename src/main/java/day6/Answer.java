@@ -204,8 +204,8 @@ public class Answer {
 
     public static void main() {
         Map map = readInput();
-        System.err.println(solveProblem1(map));
-        System.err.println(solveProblem2(map));
+        System.err.println(STR."Question 1: \{solveProblem1(map)}");
+        System.err.println(STR."Question 2: \{solveProblem2(map)}");
     }
 
     private static int solveProblem1(Map map) {
