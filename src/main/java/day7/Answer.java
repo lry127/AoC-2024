@@ -73,16 +73,17 @@ public class Answer {
         public long evaluate() {
             while (tokens.size() != 1) {
                 Operand op1 = (Operand) tokens.removeFirst();
-                Operator operand = (Operator) tokens.removeFirst();
+                Operator operator = (Operator) tokens.removeFirst();
                 Operand op2 = (Operand) tokens.removeFirst();
 
-                if (operand instanceof Multiply) {
-                    tokens.addFirst(new Operand(op1.operand * op2.operand));
-                } else if (operand instanceof Plus) {
-                    tokens.addFirst(new Operand(op1.operand + op2.operand));
-                } else {
-                    String concat = STR."\{op1.operand}\{op2.operand}";
-                    tokens.addFirst(new Operand(Long.parseLong(concat)));
+                switch (operator) {
+                    case Multiply _ -> tokens.addFirst(new Operand(op1.operand * op2.operand));
+                    case Plus _ -> tokens.addFirst(new Operand(op1.operand + op2.operand));
+                    case Concatenation _ -> {
+                        String concat = STR."\{op1.operand}\{op2.operand}";
+                        tokens.addFirst(new Operand(Long.parseLong(concat)));
+                    }
+                    case null, default -> throw new AssertionError(STR."unrecognized operator \{operator}");
                 }
             }
             return ((Operand) tokens.getFirst()).operand;
